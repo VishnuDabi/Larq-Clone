@@ -22,12 +22,22 @@ export const cartSlice = createSlice({
       if (state.items.length < 1) {
         state.items.push(action.payload);
       } else {
-        if (
-          !state.items.some(
-            (item) => JSON.stringify(item) === JSON.stringify(action.payload)
-          )
-        ) {
-          state.items.push(action.payload);
+        const newItem = action.payload;
+
+        // Check if newItem already exists in the cart
+        const isItemExists = state.items.find(
+          (item) =>
+            item.id === newItem.id &&
+            item.bottleSize === newItem.bottleSize &&
+            item.src === newItem.src &&
+            item.cap === newItem.cap &&
+            item.rs === newItem.rs &&
+            item.h5 === newItem.h5
+        );
+
+        // If newItem does not exist in the cart, add it
+        if (!isItemExists) {
+          state.items.push(newItem);
         }
       }
       calculateTotal(state);

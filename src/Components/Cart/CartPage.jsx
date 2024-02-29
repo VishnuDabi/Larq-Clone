@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./cart.css";
 import { IoClose } from "react-icons/io5";
 import { LuTag } from "react-icons/lu";
@@ -28,6 +28,14 @@ const CartPage = ({ props, fun }) => {
   const handleDecreaseQuantity = (item) => {
     dispatch(decreaseQuantity(item));
   };
+  useEffect(() => {
+    // Disable body scrolling when the component mounts
+    if (props) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [props]);
 
   return (
     <div
