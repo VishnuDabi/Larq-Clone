@@ -1,6 +1,6 @@
 import "./App.css";
-import Cart from "./Components/Cart/Cart";
 import Economical from "./Components/Economical/Economical";
+import BuyProduct from "./Components/Buy/BuyProduct";
 import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
 import Home from "./Components/Home/Home";
@@ -13,11 +13,11 @@ import SingIn from "./Components/Signin/SingIn";
 import NowTrending from "./Components/Trending/NowTrending";
 import { Route, Routes, useNavigate } from "react-router-dom";
 // import Main from "./Redux/Main";
-import { useState } from "react";
 import { ID, account } from "./lib/appwite";
 import { useDispatch } from "react-redux";
 import { setUser } from "./Redux/features/counter/cartSlice";
 import CheckOutNow from "./Components/check out now/CheckOutNow";
+import ScrollToTop from "./ScrollToTop";
 function App() {
   // const [loggedInUser, setLoggedInUser] = useState(null);
   // const [loggedInUser, setLoggedInUser] = useState(
@@ -58,69 +58,69 @@ function App() {
   }
 
   return (
-    <div>
+    <>
       {/* <Main /> */}
-
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Header logout={logoutHandler} />
-              <Home />
-              <Review />
-              <Shop />
-              <NowTrending />
-              <Economical />
-              <Mission />
-              <Magazine />
-              <Footer />
-            </>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <>
-              <Header logout={logoutHandler} />
-              <SingIn login={loginHandler} />
-              <Footer />
-            </>
-          }
-        />
-        <Route
-          path="/registration"
-          element={
-            <>
-              <Header logout={logoutHandler} />
-              <Register logout={logoutHandler} register={registerHandler} />
-              <Footer />
-            </>
-          }
-        />
-        <Route
-          path="/bottle/:targetIndex"
-          element={
-            <>
-              <Header logout={logoutHandler} />
-              <Cart />
-              <Footer />
-            </>
-          }
-        />
-        <Route
-          path="checkout"
-          element={
-            <>
-              <Header logout={logoutHandler} />
-              <CheckOutNow />
-              <Footer />
-            </>
-          }
-        />
-      </Routes>
-      <Footer />
-    </div>
+      <ScrollToTop>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Header logout={logoutHandler} />
+                <Home />
+                <Review />
+                <Shop />
+                <NowTrending />
+                <Economical />
+                <Mission />
+                <Magazine />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <>
+                <Header logout={logoutHandler} />
+                <SingIn login={loginHandler} />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/registration"
+            element={
+              <>
+                <Header logout={logoutHandler} />
+                <Register logout={logoutHandler} register={registerHandler} />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/bottle/:targetIndex"
+            element={
+              <>
+                <Header logout={logoutHandler} />
+                <BuyProduct />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="checkout"
+            element={
+              <>
+                <Header logout={logoutHandler} />
+                <CheckOutNow />
+                <Footer />
+              </>
+            }
+          />
+        </Routes>
+      </ScrollToTop>
+    </>
   );
 }
 

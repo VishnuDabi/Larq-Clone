@@ -1,5 +1,6 @@
 import React from "react";
 import "./hovered-card.css";
+import { Link } from "react-router-dom";
 const HoveredCard = ({ Props }) => {
   return (
     <>
@@ -22,7 +23,9 @@ const HoveredCard = ({ Props }) => {
                     item.active ? "container-active" : "container-first"
                   }
                 >
-                  <img className="img" src={item.src1} alt="" />
+                  <Link to={item.link1}>
+                    <img className="img" src={item.src1} alt="" />
+                  </Link>
                   <div className="hovered-card-text">
                     <h5>{item.img1h5}</h5>
                     <p>{item.type1}</p>
@@ -36,7 +39,9 @@ const HoveredCard = ({ Props }) => {
                     item.active ? "container-active" : "container-first"
                   }
                 >
-                  <img className="img" src={item.src2} alt="" />
+                  <Link to={item.link2}>
+                    <img className="img" src={item.src2} alt="" />
+                  </Link>
                   <div className="hovered-card-text">
                     <h5>{item.img2h5}</h5>
                     <p>{item.type2}</p>
@@ -51,7 +56,9 @@ const HoveredCard = ({ Props }) => {
                       item.active ? "container-active" : "container-first"
                     }
                   >
-                    <img className="img" src={item.src3} alt="" />
+                    <Link to={item.link3}>
+                      <img className="img" src={item.src3} alt="" />
+                    </Link>
                     <div className="hovered-card-text">
                       <h5>{item.img3h5}</h5>
 

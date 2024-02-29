@@ -1,0 +1,267 @@
+.cart-container {
+    padding: 50px 10%;
+
+}
+
+.cart-wrapper {
+    display: flex;
+    gap: 50px;
+}
+
+.cart-item {
+    flex: 1 1 1000px;
+}
+
+.insulated__text {
+    font-size: 12px;
+}
+
+.insulated__container {
+    text-align: start !important;
+}
+
+.insulated__btn {
+    height: 75px !important;
+
+}
+
+div.cart-item>div>img {
+    width: 100%;
+    /* height: 100%; */
+}
+
+.cart-img-container {
+    /* background-color: #f7f7f7; */
+}
+
+.cart-item-detail-container {
+    padding: 0 20px;
+    color: rgb(21, 58, 91);
+
+}
+
+.button {
+    margin: 15px 0;
+    float: left;
+    /* margin: 0 5px 0 0; */
+    width: 50%;
+    height: 40px;
+    text-align: center;
+    position: relative;
+    color: rgb(21, 58, 91);
+    z-index: 1;
+}
+
+.btn-default {
+    padding: 10px 25px;
+    margin: 0 1%;
+}
+
+/* bottle capacity buttons start */
+.button label,
+.button input {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid rgb(204, 215, 224);
+}
+
+.button input[type="radio"] {
+    opacity: 0.011;
+    z-index: 100;
+}
+
+.button input[type="radio"]:checked+label {
+
+    border: 2px solid rgb(21, 58, 91);
+}
+
+.button label {
+    cursor: pointer;
+    z-index: 90;
+    line-height: 1.8rem;
+}
+
+/* bottle capacity buttons End */
+.radio-option {
+    display: flex;
+}
+
+/*Option  radio buttons  */
+input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #dfdcdc;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: transparent;
+    position: relative;
+    top: 6px;
+}
+
+input[type="radio"]::before {
+    content: "";
+    display: block;
+    height: 65%;
+    width: 65%;
+    transition: all 0.3s ease-in-out;
+    /* background-color: rgb(99, 198, 175); */
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: appear 0.8s;
+}
+
+.radio-bg-blue::before {
+    background-color: rgb(21, 50, 91);
+
+}
+
+
+
+.radio-bg-black::before {
+    background-color: rgb(33, 32, 32);
+
+}
+
+.radio-bg-mint::before {
+    background-color: #c9e0df;
+
+}
+
+.radio-bg-white::before {
+    background-color: #f5f4ec;
+
+}
+
+.radio-bg-pink::before {
+    background-color: #E3AEAE;
+
+}
+
+
+.radio-bg-default::before {
+    background-color: #f0f0f0;
+
+}
+
+.radio-bg-green::before {
+    background-color: rgb(113, 187, 166);
+
+}
+
+.radio-bg-black-onyx::before {
+    background-image: linear-gradient(145deg, #424242 50%, #232323 50%);
+}
+
+.radio-bg-white-pebble::before {
+    background-image: linear-gradient(145deg, #e8e8e8 50%, #7b8a92 50%);
+}
+
+.radio-bg-white-dune::before {
+    background-image: linear-gradient(145deg, #e8e8e8 50%, #aca593 50%);
+}
+
+.radio-bg-black-pine::before {
+    background-image: linear-gradient(145deg, #424242 50%, #5b683f 50%);
+}
+
+.radio-bg-white-coral::before {
+    background-image: linear-gradient(145deg, #e8e8e8 50%, #eb7370 50%);
+}
+
+
+
+input[type="radio"]:checked:before {
+    transition: all 0.3s ease-in-out;
+    height: 100%;
+    width: 100%;
+}
+
+.cart-item .btn-cart {
+    padding: 15px 20px;
+    width: 100%;
+    color: #f0f0f0;
+    font-weight: 700;
+    border-color: rgb(21, 58, 91);
+    background-color: rgb(21, 58, 91);
+    margin-bottom: 10px;
+}
+
+.cart-item .btn-cart:hover {
+    padding: 15px 20px;
+    width: 100%;
+    color: rgb(21, 58, 91);
+    font-weight: 700;
+    border-color: rgb(21, 58, 91);
+    background-color: #f0f0f0;
+}
+
+.info>p,
+.info-more>div,
+.info-more>p {
+    text-align: center;
+    font-size: 14px !important;
+
+}
+
+.cart-icon {
+    font-size: 18px;
+}
+
+.info-icon {
+    opacity: 0.6;
+
+}
+
+.info-icon:hover {
+    color: #d0511b;
+}
+
+.info-more {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.info-more>div {
+    flex: 1 1 0;
+}
+
+hr {
+    margin: 25px 0px;
+    opacity: 0.5;
+
+}
+
+.bottle-txt {
+    font-size: 15px !important;
+    font-weight: 400;
+    line-height: 25px;
+    text-align: start;
+}
+
+@media screen and (max-width:993px) {
+    .cart-wrapper {
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+    }
+
+    .cart-item {
+        flex: 1 1 0;
+    }
+
+}
+
+@media screen and (max-width:600px) {
+    .button {
+        width: 100%;
+    }
+}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./trending-card.css";
 import { data } from "./data";
 import { Link } from "react-router-dom";
-import { cartData } from "../Cart/cartData";
+import { cartData } from "../Buy/cartData";
 const TrendingCard = ({ Props, Index }) => {
   const [img, setImg] = useState(false);
   const imageChangeHandler = (v, i) => {

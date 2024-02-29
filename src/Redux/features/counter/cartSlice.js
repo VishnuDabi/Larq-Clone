@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { account } from "../../../lib/appwite";
-import { createRef, useState } from "react";
 
 const calculateTotal = (state) => {
   state.totalAmount = 0;

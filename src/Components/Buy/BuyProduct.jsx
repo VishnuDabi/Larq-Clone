@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./cart.css";
+import "./buy-product.css";
 import { data as localData } from "../Trending/data";
 import { useParams } from "react-router-dom";
 import { BsFillInfoCircleFill } from "react-icons/bs";
@@ -8,24 +8,41 @@ import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { HiOutlineShieldCheck } from "react-icons/hi2";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../Redux/features/counter/cartSlice";
-const Cart = () => {
+const BuyProduct = () => {
   const dispatch = useDispatch();
   // const cartItems = useSelector((state) => state.cart.items);
-  const tr = useParams();
-
+  const { targetIndex } = useParams();
+  const [insulatedType, setInsulatedType] = useState(true);
   const [data, setData] = useState({});
   const [imgScaler, setImgScaler] = useState(false);
   const [bottleSize, setBottleSize] = useState("23 oz");
   useEffect(() => {
+    console.log(localData);
+    if (Object.keys(data).length && !insulatedType) {
+      // console.log(localData[index]);
+      // alert("changing ");
+      // localData[targetIndex] = data;
+    }
+    console.log(data);
+  });
+  useEffect(() => {
     localData.forEach((value, index) => {
-      if (index === Number(tr.targetIndex)) {
-        setData(value);
-        console.log(data);
+      if (index === Number(targetIndex)) {
+        if (insulatedType) {
+          setData(value);
+        } else {
+          // if (Object.keys(data).length) {
+          //   console.log(localData[index]);
+          //   localData[index].nonInsulated = data;
+          // }
+          setData(value.nonInsulated);
+        }
       }
     });
-  }, [tr.targetIndex]);
+  }, [targetIndex, insulatedType]);
   function imgHandler(value, name, rs, grossAmount) {
     // console.log(value);
+
     data.src = value;
     if (grossAmount) {
       setData({
@@ -35,6 +52,23 @@ const Cart = () => {
         rs: rs,
         grossAmount: grossAmount,
       });
+      if (insulatedType) {
+        localData[targetIndex] = {
+          ...localData[targetIndex],
+          src: value,
+          cap: name,
+          rs: rs,
+          grossAmount: grossAmount,
+        };
+      } else {
+        localData[targetIndex].nonInsulated = {
+          ...localData[targetIndex].nonInsulated,
+          src: value,
+          cap: name,
+          rs: rs,
+          grossAmount: grossAmount,
+        };
+      }
     } else {
       setData({
         ...data,
@@ -42,6 +76,21 @@ const Cart = () => {
         cap: name,
         rs: rs,
       });
+      if (insulatedType) {
+        localData[targetIndex] = {
+          ...localData[targetIndex],
+          src: value,
+          cap: name,
+          rs: rs,
+        };
+      } else {
+        localData[targetIndex].nonInsulated = {
+          ...localData[targetIndex].nonInsulated,
+          src: value,
+          cap: name,
+          rs: rs,
+        };
+      }
     }
   }
   const handleAddItem = (item) => {
@@ -71,6 +120,45 @@ const Cart = () => {
           </h4>
           ⭐⭐⭐⭐6356 reviews
           <br />
+          {data.nonInsulated ? (
+            <>
+              <span>Insulation</span>
+              <br />
+              <div className="button insulated__btn">
+                <input
+                  type="radio"
+                  id="insulated"
+                  name="insulation-type"
+                  onChange={() => setInsulatedType(true)}
+                  checked={insulatedType}
+                />
+                <label className=" btn-default" htmlFor="insulated">
+                  <div className="insulated__container">
+                    <h6 className="insulated__text">Insulated</h6>
+                    <span className="insulated__text">
+                      24 hours cold or 12 hours hot
+                    </span>
+                  </div>
+                </label>
+              </div>
+              <div className="button insulated__btn">
+                <input
+                  type="radio"
+                  id="non-insulated"
+                  name="insulation-type"
+                  checked={!insulatedType}
+                  onChange={() => setInsulatedType(false)}
+                />
+                <label className=" btn-default" htmlFor="non-insulated">
+                  <div className="insulated__container">
+                    <h6 className="insulated__text">Non-Insulated</h6>
+                    <span className="insulated__text">Light as Air</span>
+                  </div>
+                </label>
+              </div>
+            </>
+          ) : null}
+          <br />
           <span>Size</span>
           <br />
           <div className="button">
@@ -79,6 +167,7 @@ const Cart = () => {
               id="23-oz"
               name="size"
               value="23 oz"
+              checked={!imgScaler}
               onChange={(event) => {
                 setImgScaler(false);
                 setBottleSize(event.target.value);
@@ -90,6 +179,7 @@ const Cart = () => {
           </div>
           <div className="button">
             <input
+              checked={imgScaler}
               type="radio"
               id="34-oz"
               name="size"
@@ -155,7 +245,17 @@ const Cart = () => {
                               name="color-name"
                               id=""
                               className={
-                                data.size[index].includes("Blue")
+                                data.size[index].includes("Black / Onyx")
+                                  ? "radio-bg-black-onyx"
+                                  : data.size[index].includes("White / Pebble")
+                                  ? " radio-bg-white-pebble"
+                                  : data.size[index].includes("White / Dune")
+                                  ? " radio-bg-white-dune"
+                                  : data.size[index].includes("Black / Pine")
+                                  ? " radio-bg-black-pine"
+                                  : data.size[index].includes("White / Coral")
+                                  ? " radio-bg-white-coral"
+                                  : data.size[index].includes("Blue")
                                   ? " radio-bg-blue  "
                                   : data.size[index].includes("White")
                                   ? "radio-bg-white "
@@ -197,7 +297,7 @@ const Cart = () => {
             className="btn-cart"
             onClick={() =>
               handleAddItem({
-                id: tr.targetIndex,
+                id: targetIndex,
                 bottleSize: bottleSize,
                 src: data.src,
                 cap: data.cap,
@@ -246,4 +346,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default BuyProduct;

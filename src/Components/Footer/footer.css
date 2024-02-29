@@ -4,7 +4,6 @@
 }
 
 .footer-wrapper {
-    /* margin: 2rem 10rem 2rem; */
     padding: 2rem 0rem 2rem 8rem;
     display: flex;
 
@@ -130,8 +129,8 @@
     width: 100%;
     gap: 10px;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
     justify-content: flex-start;
+
 }
 
 @media screen and (max-width:1420px) {
@@ -164,12 +163,7 @@
     .footer-btn button:first-child {
         font-size: 1.6rem;
     }
-
-
-
 }
-
-
 
 @media screen and (max-width:776px) {
     .footer-wrapper {

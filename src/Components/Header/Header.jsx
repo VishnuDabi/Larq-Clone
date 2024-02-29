@@ -10,10 +10,10 @@ import { menuData4 } from "./menuData";
 import { IoIosMenu } from "react-icons/io";
 import Menu from "./Menu";
 import { IoCloseOutline } from "react-icons/io5";
-import Checkout from "../Checkout/Checkout";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setLogout } from "../../Redux/features/counter/cartSlice";
+import CartPage from "../Cart/CartPage";
 
 const Header = ({ logout }) => {
   const [showMenu, setShowMenu] = useState(false);
@@ -134,7 +134,7 @@ const Header = ({ logout }) => {
           </div>
 
           <Menu props={showMenu} />
-          <Checkout props={checkoutToggle} fun={checkoutToggleHandler} />
+          <CartPage props={checkoutToggle} fun={checkoutToggleHandler} />
         </header>
       </section>
     </>

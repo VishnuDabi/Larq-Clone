@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./checkout.css";
+import "./cart.css";
 import { IoClose } from "react-icons/io5";
 import { LuTag } from "react-icons/lu";
 import { Link } from "react-router-dom";
@@ -10,7 +10,7 @@ import {
   increaseQuantity,
   removeItem,
 } from "../../Redux/features/counter/cartSlice";
-const Checkout = ({ props, fun }) => {
+const CartPage = ({ props, fun }) => {
   const [hovered, setHovered] = useState(false);
   // const [quantity, setQuantity] = useState(1);
   const cartItems = useSelector((state) => state.cart.items);
@@ -160,4 +160,4 @@ const Checkout = ({ props, fun }) => {
   );
 };
 
-export default Checkout;
+export default CartPage;
